@@ -1,23 +1,23 @@
 version: "3.8"
 
 services:
-  pgmoreno:
-    image: pgmoreno:latest
+  pancho:
+    image: pancho:latest
     build: .
     deploy:
       replicas: 1
       labels:
         - "traefik.enable=true"
-        - "traefik.http.routers.pgmoreno.entrypoints=http"
-        - "traefik.http.routers.pgmoreno.rule=Host(`pgmoreno.byronrm.com`)"
-        - "traefik.http.middlewares.pgmoreno-https-redirect.redirectscheme.scheme=https"
-        - "traefik.http.routers.pgmoreno.middlewares=pgmoreno-https-redirect"
-        - "traefik.http.routers.pgmoreno-secure.entrypoints=https"
-        - "traefik.http.routers.pgmoreno-secure.rule=Host(`pgmoreno.byronrm.com`)"
-        - "traefik.http.routers.pgmoreno-secure.tls=true"
-        - "traefik.http.routers.pgmoreno-secure.tls.certresolver=http"
-        - "traefik.http.routers.pgmoreno-secure.service=pgmoreno"
-        - "traefik.http.services.pgmoreno.loadbalancer.server.port=80"
+        - "traefik.http.routers.pancho.entrypoints=http"
+        - "traefik.http.routers.pancho.rule=Host(`pancho.byronrm.com`)"
+        - "traefik.http.middlewares.pancho-https-redirect.redirectscheme.scheme=https"
+        - "traefik.http.routers.pancho.middlewares=pancho-https-redirect"
+        - "traefik.http.routers.pancho-secure.entrypoints=https"
+        - "traefik.http.routers.pancho-secure.rule=Host(`pancho.byronrm.com`)"
+        - "traefik.http.routers.pancho-secure.tls=true"
+        - "traefik.http.routers.pancho-secure.tls.certresolver=http"
+        - "traefik.http.routers.pancho-secure.service=pancho"
+        - "traefik.http.services.pancho.loadbalancer.server.port=80"
         - "traefik.docker.network=traefik-public"
     networks:
       - traefik-public
